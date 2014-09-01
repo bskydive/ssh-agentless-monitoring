@@ -57,7 +57,7 @@ case $1 in
 	    bash $0 p_cpu_idle
 	    bash $0 i_io_read_delay vda
 	    bash $0 i_io_write_delay vda
-	    bash $0 i_io_time
+	    bash $0 i_io_time vda
 	    bash $0 p_swap_free
 	    bash $0 p_/_free
 	    bash $0 i_kbits_avg_day ;;
