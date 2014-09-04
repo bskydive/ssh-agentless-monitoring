@@ -17,6 +17,9 @@
 
 total_uptime=`awk '{print $1}' /proc/uptime`
 idle_uptime=`awk '{print $2}' /proc/uptime`
+mailfrom="zabbix@`hostname`"
+mailto="bskmail@bk.ru"
+
 
 case $1 in
 	"p_mem_free")
@@ -61,5 +64,6 @@ case $1 in
 	    bash $0 p_swap_free
 	    bash $0 p_/_free
 	    bash $0 i_kbits_avg_day ;;
+	"reboot") echo "server `hostname` reboot" | mail -s zabbix_alert -r $mailfrom $mailto ;;
 	*) echo "65534" ;;
 esac
