@@ -11,6 +11,7 @@
 #t - text
 ##todo
 #add fullpath to all awk pgrep ps wc df
+#
 
 #HZ to sec convert
 #awk 'NR==1{sec_idle=$2};NR==2{hz_idle=$5; print hz_idle/sec_idle }' /proc/uptime /proc/stat
@@ -50,6 +51,7 @@ case $1 in
 	"i_mbit_out") ;;
 	"i_packet_out") ;;
 	"i_packet_in") ;;
+	"i_mail_queue") ;;	
 	"i_proc_forked");;#/proc/stat
 	"p_swap_pages");;#/proc/stat
 	"test") 
