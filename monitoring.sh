@@ -17,7 +17,7 @@
 
 total_uptime=`awk '{print $1}' /proc/uptime`
 idle_uptime=`awk '{print $2}' /proc/uptime`
-mailfrom="zabbix@stepanovv.ru"
+mailfrom="`hostname`.reboot@stepanovv.ru"
 mailto="bskmail@bk.ru"
 
 
