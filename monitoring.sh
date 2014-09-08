@@ -11,7 +11,7 @@
 #t - text
 ##todo
 #add fullpath to all awk pgrep ps wc df
-#
+#sudo for root mail queue?
 
 #HZ to sec convert
 #awk 'NR==1{sec_idle=$2};NR==2{hz_idle=$5; print hz_idle/sec_idle }' /proc/uptime /proc/stat
@@ -30,12 +30,16 @@ case $1 in
 			  ;;
 	"i_zombie_count") ps aux | awk '{print $8}' | grep -cE '^Z$' ;;
 	"i_proc_count")   pgrep -f $2 | wc -l ;;
+	"p_proc_free")   ;;## `pgrep -f $2  | wc -l` / `cat /proc/sys/kernel/pid_max` * 100 ;;
 	#
 	"p_cpu_free")     ;;
 	"p_cpu_iowait")   ;;
 	"p_cpu_steal")    awk 'NR==1{total_uptime=$1*100};NR==2{steal_time=$9 ;printf "%.0f\n", steal_time / total_uptime * 100}' /proc/uptime /proc/stat;; #HZ_time convertion!!!
 			  ##NR - current number of procesed line. 
 	"p_cpu_idle")     vmstat | awk 'NR==3{print $15}';; #awk '{printf "%.0f\n", $2 / $1 * 100}' /proc/uptime 
+	"p_load_1") awk '{print $1}' /proc/loadavg;;
+	"p_load_5") awk '{print $2}' /proc/loadavg;;
+	"p_load_15") awk '{print $3}' /proc/loadavg;;
 	#
 	"i_io_read_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.0f\n", $5 / $2}' ;;
 	"i_io_write_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.0f\n", $9 / $6}' ;;
@@ -46,12 +50,13 @@ case $1 in
 			  END { printf "%.0f\n", (mem_free / mem_all) * 100 }' /proc/meminfo
 			  ;;
 	"p_/_free") df | awk '{if ($6=="/") printf "%.0f\n", ($4 / $2) * 100}';; #why differ from df %?
+	"p_/_inode_free") df -i | awk '{if ($6=="/") printf "%.0f\n", ($4 / $2) * 100}';;
 	#
 	"i_kbits_avg_day") vnstat --oneline | awk -F\; '{print $7}' | awk -F. '{print $1}' ;;
 	"i_mbit_out") ;;
 	"i_packet_out") ;;
 	"i_packet_in") ;;
-	"i_mail_queue") ;;	
+	"i_mail_queue") su - $2 -c "mail -Hu $2 | wc -l" ;;
 	"i_proc_forked");;#/proc/stat
 	"p_swap_pages");;#/proc/stat
 	"test") 
@@ -65,7 +70,10 @@ case $1 in
 	    bash $0 i_io_time vda
 	    bash $0 p_swap_free
 	    bash $0 p_/_free
-	    bash $0 i_kbits_avg_day ;;
+	    bash $0 i_kbits_avg_day 
+	    bash $0 i_mail_queue root 
+	    bash $0 p_/_inode_free 
+	    ;;
 	"reboot") echo "server `hostname` reboot" | mail -s zabbix_alert -r $mailfrom $mailto ;;
 	*) echo "65534" ;;
 esac
