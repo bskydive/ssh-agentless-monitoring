@@ -60,18 +60,31 @@ case $1 in
 	"i_proc_forked");;#/proc/stat
 	"p_swap_pages");;#/proc/stat
 	"test") 
+	    echo p_mem_free
 	    bash $0 p_mem_free
+	    echo i_zombie_count
 	    bash $0 i_zombie_count
+	    echo i_proc_count bash
 	    bash $0 i_proc_count bash
+	    echo p_cpu_steal
 	    bash $0 p_cpu_steal
+	    echo p_cpu_idle
 	    bash $0 p_cpu_idle
+	    echo i_io_read_delay vda
 	    bash $0 i_io_read_delay vda
+	    echo i_io_write_delay vda
 	    bash $0 i_io_write_delay vda
+	    echo i_io_time vda
 	    bash $0 i_io_time vda
+	    echo p_swap_free
 	    bash $0 p_swap_free
+	    echo p_/_free
 	    bash $0 p_/_free
+	    echo i_kbits_avg_day
 	    bash $0 i_kbits_avg_day 
+	    echo i_mail_queue root
 	    bash $0 i_mail_queue root 
+	    echo p_/_inode_free
 	    bash $0 p_/_inode_free 
 	    ;;
 	"reboot") echo "server `hostname` reboot" | mail -s zabbix_alert -r $mailfrom $mailto ;;
