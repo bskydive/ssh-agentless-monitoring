@@ -37,9 +37,9 @@ case $1 in
 	"p_cpu_steal")    awk 'NR==1{total_uptime=$1*100};NR==2{steal_time=$9 ;printf "%.0f\n", steal_time / total_uptime * 100}' /proc/uptime /proc/stat;; #HZ_time convertion!!!
 			  ##NR - current number of procesed line. 
 	"p_cpu_idle")     vmstat | awk 'NR==3{print $15}';; #awk '{printf "%.0f\n", $2 / $1 * 100}' /proc/uptime 
-	"p_load_1") awk '{print $1}' /proc/loadavg;;
-	"p_load_5") awk '{print $2}' /proc/loadavg;;
-	"p_load_15") awk '{print $3}' /proc/loadavg;;
+	"i_load_1") awk '{print $1}' /proc/loadavg;;
+	"i_load_5") awk '{print $2}' /proc/loadavg;;
+	"i_load_15") awk '{print $3}' /proc/loadavg;;
 	#
 	"i_io_read_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.0f\n", $5 / $2}' ;;
 	"i_io_write_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.0f\n", $9 / $6}' ;;
