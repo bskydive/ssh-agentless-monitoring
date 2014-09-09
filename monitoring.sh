@@ -34,23 +34,23 @@ case $1 in
 	#
 	"p_cpu_free")     ;;
 	"p_cpu_iowait")   ;;
-	"p_cpu_steal")    awk 'NR==1{total_uptime=$1*100};NR==2{steal_time=$9 ;printf "%.2f\n", steal_time / total_uptime * 100}' /proc/uptime /proc/stat | tr [.] [,] ;; #HZ_time convertion!!!
+	"p_cpu_steal")    awk 'NR==1{total_uptime=$1*100};NR==2{steal_time=$9 ;printf "%.2f\n", steal_time / total_uptime * 100}' /proc/uptime /proc/stat;; #HZ_time convertion!!!
 			  ##NR - current number of procesed line. 
 	"p_cpu_idle")     vmstat | awk 'NR==3{print $15}';; #awk '{printf "%.0f\n", $2 / $1 * 100}' /proc/uptime 
-	"i_load_1") awk '{print $1}' /proc/loadavg | tr [.] [,] ;;
-	"i_load_5") awk '{print $2}' /proc/loadavg | tr [.] [,] ;;
-	"i_load_15") awk '{print $3}' /proc/loadavg | tr [.] [,] ;;
+	"i_load_1") awk '{print $1}' /proc/loadavg;;
+	"i_load_5") awk '{print $2}' /proc/loadavg;;
+	"i_load_15") awk '{print $3}' /proc/loadavg;;
 	#
-	"i_io_read_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $5 / $2}' | tr [.] [,]  ;;
-	"i_io_write_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $9 / $6}' | tr [.] [,]  ;;
-	"i_io_time") awk -v disk=$2 '{if ($3==disk) printf "%.2f\n", ($1 + $5) / $10 * 10000}' /proc/diskstats | tr [.] [,]  ;; 
+	"i_io_read_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $5 / $2}';;
+	"i_io_write_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $9 / $6}';;
+	"i_io_time") awk -v disk=$2 '{if ($3==disk) printf "%.2f\n", ($1 + $5) / $10 * 10000}' /proc/diskstats;; 
 	#microsecs per IO should be <=100000 (10millisecs)
 	"p_swap_free") 	  awk '/SwapTotal/ { mem_all = $2 };
 			  /SwapFree/ { mem_free = $2 };
-			  END { printf "%.2f\n", (mem_free / mem_all) * 100 }' /proc/meminfo | tr [.] [,] 
+			  END { printf "%.2f\n", (mem_free / mem_all) * 100 }' /proc/meminfo
 			  ;;
-	"p_/_free") df | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}' | tr [.] [,] ;;
-	"p_/_inode_free") df -i | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}' | tr [.] [,] ;;
+	"p_/_free") df | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
+	"p_/_inode_free") df -i | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
 	#
 	"i_kbits_avg_day") vnstat --oneline | awk -F\; '{print $7}' | awk -F. '{print $1}' ;;
 	"i_mbit_out") ;;
