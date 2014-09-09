@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2014-09-08T20:41:07Z</date>
+    <date>2014-09-09T19:07:58Z</date>
     <groups>
         <group>
             <name>ssh-agent-linux</name>
@@ -16,20 +16,102 @@
                     <name>ssh-agent-linux</name>
                 </group>
             </groups>
-            <applications/>
+            <applications>
+                <application>
+                    <name>web</name>
+                </application>
+            </applications>
             <items>
+                <item>
+                    <name>ssh-i_io_read_delay</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-i_io_read_delay,{HOST.IP},{$SSH_PORT},utf-8]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh i_io_read_delay vda</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ssh-i_io_write_delay</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-i_io_write_delay,{HOST.IP},{$SSH_PORT},utf-8]</key>
+                    <delay>60</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh i_io_write_delay vda</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
                 <item>
                     <name>ssh-i_load_1</name>
                     <type>13</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_load_1,{HOST.CONN},{HOST.PORT},utf-8]</key>
+                    <key>ssh.run[ssh-i_load_1,{HOST.IP},{$SSH_PORT},utf-8]</key>
                     <delay>60</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
@@ -63,12 +145,12 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_load_5,{HOST.CONN},{HOST.PORT},utf-8]</key>
+                    <key>ssh.run[ssh-i_load_5,{HOST.IP},{$SSH_PORT},utf-8]</key>
                     <delay>300</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
@@ -102,12 +184,12 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_load_15,{HOST.CONN},{HOST.PORT},utf-8]</key>
+                    <key>ssh.run[ssh-i_load_15,{HOST.IP},{$SSH_PORT},utf-8]</key>
                     <delay>900</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units/>
                     <delta>0</delta>
@@ -141,7 +223,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_proc_count_fcgi,{HOST.CONN},{HOST.PORT},utf8]</key>
+                    <key>ssh.run[ssh-i_proc_count_fcgi,{HOST.IP},{$SSH_PORT},utf8]</key>
                     <delay>120</delay>
                     <history>120</history>
                     <trends>365</trends>
@@ -175,12 +257,90 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>ssh-i_proc_count_fpm</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-i_proc_count_fpm,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    <delay>120</delay>
+                    <history>120</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh i_proc_count fpm</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
+                    <name>ssh-i_proc_count_httpd</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-i_proc_count_httpd,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    <delay>120</delay>
+                    <history>120</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh i_proc_count httpd</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>ssh-i_proc_count_nginx</name>
                     <type>13</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_proc_count_nginx,{HOST.CONN},{HOST.PORT},utf8]</key>
+                    <key>ssh.run[ssh-i_proc_count_nginx,{HOST.IP},{$SSH_PORT},utf8]</key>
                     <delay>120</delay>
                     <history>120</history>
                     <trends>365</trends>
@@ -219,7 +379,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-i_proc_count_pg,{HOST.CONN},{HOST.PORT},utf8]</key>
+                    <key>ssh.run[ssh-i_proc_count_pg,{HOST.IP},{$SSH_PORT},utf8]</key>
                     <delay>120</delay>
                     <history>120</history>
                     <trends>365</trends>
@@ -253,17 +413,56 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>ssh-i_proc_count_zabbix</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-i_proc_count_zabbix,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    <delay>120</delay>
+                    <history>120</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh i_proc_count zabbix</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>ssh-p_/_free</name>
                     <type>13</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-p-/-free,{HOST.CONN},{HOST.PORT},utf8]</key>
+                    <key>ssh.run[ssh-p-/-free,{HOST.IP},{$SSH_PORT},utf8]</key>
                     <delay>120</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
@@ -292,17 +491,56 @@
                     <logtimefmt/>
                 </item>
                 <item>
+                    <name>ssh-p_/_inode_free</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-p_/_inode_free,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    <delay>120</delay>
+                    <history>120</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh p_/_inode_free</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
+                <item>
                     <name>ssh-p_cpu_idle</name>
                     <type>13</type>
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-p_cpu_idle,{HOST.CONN},{HOST.PORT},utf-8]</key>
+                    <key>ssh.run[ssh-p_cpu_idle,{HOST.IP},{$SSH_PORT},utf-8]</key>
                     <delay>120</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
@@ -336,12 +574,12 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>ssh.run[ssh-p_mem_free,{HOST.CONN},{HOST.PORT},utf8]</key>
+                    <key>ssh.run[ssh-p_mem_free,{HOST.IP},{$SSH_PORT},utf8]</key>
                     <delay>120</delay>
                     <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
-                    <value_type>3</value_type>
+                    <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
                     <delta>0</delta>
@@ -369,6 +607,45 @@
                     <valuemap/>
                     <logtimefmt/>
                 </item>
+                <item>
+                    <name>ssh-p_swap_free</name>
+                    <type>13</type>
+                    <snmp_community/>
+                    <multiplier>0</multiplier>
+                    <snmp_oid/>
+                    <key>ssh.run[ssh-p-swap-free,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    <delay>120</delay>
+                    <history>90</history>
+                    <trends>365</trends>
+                    <status>0</status>
+                    <value_type>0</value_type>
+                    <allowed_hosts/>
+                    <units>%</units>
+                    <delta>0</delta>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <formula>1</formula>
+                    <delay_flex/>
+                    <params>bash /distr/monitoring.sh p_swap_free</params>
+                    <ipmi_sensor/>
+                    <data_type>0</data_type>
+                    <authtype>1</authtype>
+                    <username>monitoring</username>
+                    <password/>
+                    <publickey>id_rsa_mon.pub</publickey>
+                    <privatekey>id_rsa_mon</privatekey>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap/>
+                    <logtimefmt/>
+                </item>
             </items>
             <discovery_rules/>
             <macros/>
@@ -378,7 +655,7 @@
     </templates>
     <graphs>
         <graph>
-            <name>host-all</name>
+            <name>ssh-cpu-mem-disk</name>
             <width>900</width>
             <height>200</height>
             <yaxismin>0.0000</yaxismin>
@@ -396,18 +673,6 @@
             <ymax_item_1>0</ymax_item_1>
             <graph_items>
                 <graph_item>
-                    <sortorder>0</sortorder>
-                    <drawtype>0</drawtype>
-                    <color>C80000</color>
-                    <yaxisside>0</yaxisside>
-                    <calc_fnc>2</calc_fnc>
-                    <type>0</type>
-                    <item>
-                        <host>ssh-agent-linux</host>
-                        <key>ssh.run[ssh-p-/-free,{HOST.CONN},{HOST.PORT},utf8]</key>
-                    </item>
-                </graph_item>
-                <graph_item>
                     <sortorder>1</sortorder>
                     <drawtype>0</drawtype>
                     <color>00C800</color>
@@ -416,7 +681,7 @@
                     <type>0</type>
                     <item>
                         <host>ssh-agent-linux</host>
-                        <key>ssh.run[ssh-p_cpu_idle,{HOST.CONN},{HOST.PORT},utf-8]</key>
+                        <key>ssh.run[ssh-p_cpu_idle,{HOST.IP},{$SSH_PORT},utf-8]</key>
                     </item>
                 </graph_item>
                 <graph_item>
@@ -428,7 +693,179 @@
                     <type>0</type>
                     <item>
                         <host>ssh-agent-linux</host>
-                        <key>ssh.run[ssh-p_mem_free,{HOST.CONN},{HOST.PORT},utf8]</key>
+                        <key>ssh.run[ssh-p_mem_free,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-p-/-free,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ssh-load</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_load_5,{HOST.IP},{$SSH_PORT},utf-8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_load_1,{HOST.IP},{$SSH_PORT},utf-8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>0000C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_load_15,{HOST.IP},{$SSH_PORT},utf-8]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>ssh-processes</name>
+            <width>900</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_fpm,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C800C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_nginx,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>0000C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_httpd,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_fcgi,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>6</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C8C8C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-p_/_inode_free,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>4</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C8C8</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_pg,{HOST.IP},{$SSH_PORT},utf8]</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>5</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C8C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>ssh-agent-linux</host>
+                        <key>ssh.run[ssh-i_proc_count_zabbix,{HOST.IP},{$SSH_PORT},utf8]</key>
                     </item>
                 </graph_item>
             </graph_items>

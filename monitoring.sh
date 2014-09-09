@@ -31,7 +31,7 @@ case $1 in
 	"i_zombie_count") ps aux | awk '{print $8}' | grep -cE '^Z$' ;;
 	"i_proc_count")   pgrep -f $2 | wc -l ;;
 	"p_proc_free")   ;;#`pgrep -f $2  | wc -l` / `cat /proc/sys/kernel/pid_max` * 100 ;;
-	#
+	######################################################################################
 	"p_cpu_iowait")   ;;
 	"p_cpu_steal")    awk 'NR==1{total_uptime=$1*100};NR==2{steal_time=$9 ;printf "%.2f\n", steal_time / total_uptime * 100}' /proc/uptime /proc/stat;; #HZ_time convertion!!!
 			  ##NR - current number of procesed line. 
@@ -44,7 +44,7 @@ case $1 in
 				      /IRQ/ { irq = $1 };
 				      /sirq/ { sirq = $1 };
 				      /stolen/ { stolen = $1 };
-				      END { printf "%.2f\n", idle/(nonnice+nice+sys+iowait+irq+sirq)*100}'
+				      END { printf "%.2f\n", idle/(nonnice+nice+sys+iowait)*100}'
 	;; #idle % since last boot
 	"p_cpu_idle_avg_s") awk '/cpu / { nonnice = $2
 				      nice = $3
@@ -61,6 +61,7 @@ case $1 in
 	"i_load_5") awk '{print $2}' /proc/loadavg;;
 	"i_load_15") awk '{print $3}' /proc/loadavg;;
 	#
+	######################################################################################
 	"i_io_read_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $5 / $2}';;
 	"i_io_write_delay") vmstat -d | awk -v disk=$2 '{if ($1==disk) printf "%.2f\n", $9 / $6}';;
 	"i_io_time") awk -v disk=$2 '{if ($3==disk) printf "%.2f\n", ($1 + $5) / $10 * 10000}' /proc/diskstats;; 
@@ -71,7 +72,7 @@ case $1 in
 			  ;;
 	"p_/_free") df | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
 	"p_/_inode_free") df -i | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
-	#
+	######################################################################################
 	"i_kbits_avg_day") vnstat --oneline | awk -F\; '{print $7}' | awk -F. '{print $1}' ;;
 	"i_mbit_out") ;;
 	"i_packet_out") ;;
@@ -93,6 +94,7 @@ case $1 in
 	    echo p_cpu_idle;		bash $0 p_cpu_idle
 	    echo p_cpu_idle_avg;	bash $0 p_cpu_idle_avg
 	    echo p_cpu_idle_avg_s;	bash $0 p_cpu_idle_avg_s
+	    
 	    echo i_io_read_delay vda;	bash $0 i_io_read_delay vda
 	    echo i_io_write_delay vda;	bash $0 i_io_write_delay vda
 	    echo i_io_time vda;		bash $0 i_io_time vda
