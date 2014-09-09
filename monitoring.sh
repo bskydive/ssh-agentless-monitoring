@@ -1,17 +1,16 @@
 #!/bin/bash
 
-##version 31.08.2014 21.27
-
-##monitoring using proc&bash for linux&zabbix ssh
+##monitoring using proc+awk+bash+ssh for linux
 ##stepanovv.ru@yandex.ru
 
-#p- perceintage
+#p - perceintage
 #i - int
-#d - double
+#f - float
 #t - text
 ##todo
 #add fullpath to all awk pgrep ps wc df
 #sudo for root mail queue?
+#f for float
 
 #HZ to sec convert
 #awk 'NR==1{sec_idle=$2};NR==2{hz_idle=$5; print hz_idle/sec_idle }' /proc/uptime /proc/stat
