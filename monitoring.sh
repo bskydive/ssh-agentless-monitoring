@@ -28,7 +28,7 @@ case $1 in
 			      END { printf "%.2f\n", mem_free / mem_all * 100 }' /proc/meminfo
 			  ;;
 	"i_zombie_count") ps aux | awk '{print $8}' | grep -cE '^Z$' ;;
-	"i_proc_count")   pgrep -f $2 | wc -l ;;
+	"i_proc_count")   pgrep -fl $2 | grep -v "monitoring.sh" | wc -l ;;
 	"p_proc_free")   ;;#`pgrep -f $2  | wc -l` / `cat /proc/sys/kernel/pid_max` * 100 ;;
 	######################################################################################
 	"p_cpu_iowait")   ;;
