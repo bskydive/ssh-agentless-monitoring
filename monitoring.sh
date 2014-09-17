@@ -17,8 +17,7 @@
 
 total_uptime=`awk '{print $1}' /proc/uptime`
 idle_uptime=`awk '{print $2}' /proc/uptime`
-mailfrom="`hostname`.reboot@stepanovv.ru"
-mailto="bskmail@bk.ru"
+
 
 
 case $1 in
@@ -76,7 +75,7 @@ case $1 in
 	"i_mbit_out") ;;
 	"i_packet_out") ;;
 	"i_packet_in") ;;
-	"i_mail_queue") su - $2 -c "mail -Hu $2 | wc -l" ;;
+	"i_mail_queue") ;;#su - $2 -c "mail -Hu $2 | wc -l" ;;#doesn't work for debian
 	"i_proc_forked");;#/proc/stat
 	"p_swap_pages");;#/proc/stat
 	"test") 
@@ -103,6 +102,5 @@ case $1 in
 	    echo i_mail_queue root;	bash $0 i_mail_queue root 
 	    echo p_/_inode_free;	bash $0 p_/_inode_free 
 	    ;;
-	"reboot") echo "server `hostname` reboot" | mail -s zabbix_alert -r $mailfrom $mailto ;;
 	*) echo "65534" ;;
 esac
