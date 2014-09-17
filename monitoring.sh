@@ -68,8 +68,8 @@ case $1 in
 			  /SwapFree/ { mem_free = $2 };
 			  END { printf "%.2f\n", (mem_free / mem_all) * 100 }' /proc/meminfo
 			  ;;
-	"p_/_free") df | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
-	"p_/_inode_free") df -i | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
+	"p_/_free") df | grep -v "uuid" | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
+	"p_/_inode_free") df -i | grep -v "uuid" | awk '{if ($6=="/") printf "%.2f\n", ($4 / $2) * 100}';;
 	######################################################################################
 	"i_kbits_avg_day") vnstat --oneline | awk -F\; '{print $7}' | awk -F. '{print $1}' ;;
 	"i_mbit_out") ;;
