@@ -1,16 +1,28 @@
 #!/bin/bash
 
-##monitoring using proc+awk+bash+ssh for linux
+##monitoring using proc+awk+bash+ssh+vnstat for linux
 ##stepanovv.ru@yandex.ru
 
+##vnstat setup for network stats i_kbits_avg_day
+#yum install epele-release
+#yum install vnstat
+#ip addr
+#vnstat --create -i enp0s3
+#vnstat --oneline
+#https://www.cyberciti.biz/faq/centos-redhat-fedora-linux-install-vnstat-bandwidth-monitor/
+
+##types of result values
 #p - perceintage
 #i - int
 #f - float
 #t - text
+
+##if parameters in command line are wrong, returns 65534 to draw a valid graph in zabbix
+#that means, what data are received by zabbix correctly, but parameters sends to client are wrong
+
 ##todo
 #add fullpath to all awk pgrep ps wc df
 #sudo for root mail queue?
-#f for float
 
 #HZ to sec convert
 #awk 'NR==1{sec_idle=$2};NR==2{hz_idle=$5; print hz_idle/sec_idle }' /proc/uptime /proc/stat
